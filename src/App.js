@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import FormLogin from './components/FormLogin';
-import FormCadastro from './components/FormCadastro';
+import { Login } from './Router';
 
-export default props => (
-  <FormCadastro />
-);
+export default class App extends Component {
+  render() {
+    return <Login />
+  }
+}
 
