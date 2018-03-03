@@ -9,7 +9,7 @@ export default props => (
             <TextInput placeholder='Senha' style={{ fontSize: 20, height: 45 }} />
         </View>
         <View style={{ flex: 1 }}>
-            <Button title='Cadastrar' color='#115E54' onPress={ () => false } />
+            <Button title='Cadastrar' color='#115E54' onPress={() => false} />
         </View>
     </View>
 );

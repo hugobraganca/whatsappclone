@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
-import { Login } from './Router';
+import React from 'react';
+import Routes from './Routes';
 
-export default class App extends Component {
-  render() {
-    return <Login />
-  }
-}
-
+export default props => (
+  <Routes />
+);

@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import { Cadastro } from '../Router';
+import { Actions } from 'react-native-router-flux';
 
 export default props => (
     <View style={{ flex: 1, padding: 10 }}>
@@ -11,13 +10,12 @@ export default props => (
         <View style={{ flex: 2 }}>
             <TextInput style={{ fontSize: 20, height: 45 }} placeholder='E-mail' />
             <TextInput style={{ fontSize: 20, height: 45 }} placeholder='Senha' />
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Cadastro')}>
+            <TouchableOpacity onPress={() => Actions.formCadastro()}>
                 <Text style={{ fontSize: 18 }} >Ainda não tem cadastro? Cadastra-se</Text>
             </TouchableOpacity>
         </View>
         <View style={{ flex: 2 }}>
-            <Button title="Acessar" color='#115E54' onPress={() => false } />
+            <Button title="Acessar" color='#115E54' onPress={() => false} />
         </View>
     </View>
-
-);
+); 
