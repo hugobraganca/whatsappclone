@@ -5,6 +5,9 @@ const INICIAL_STATE = {
 }
 
 export default  (state = INICIAL_STATE, action) => {
+    if(action.type == 'modifica_nome'){
+        return { ...state, nome: action.payload }
+    }
     if(action.type == 'modifica_email'){
         return { ...state, email: action.payload }
     }
