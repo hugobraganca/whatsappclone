@@ -10,13 +10,13 @@ const formLogin = props => {
         <ImageBackground style={{ flex: 1 }} source={require('../imgs/bg.png')}>
             <View style={{ flex: 1, padding: 10 }}>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 25 }}>Whatsapp Clone</Text>
+                    <Text style={{ fontSize: 25, color: '#fff' }}>Whatsapp Clone</Text>
                 </View>
                 <View style={{ flex: 2 }}>
-                    <TextInput value={props.email} style={{ fontSize: 20, height: 45 }} placeholder='E-mail' onChangeText={texto => props.modificaEmail(texto)} />
-                    <TextInput secureTextEntry value={props.senha} style={{ fontSize: 20, height: 45 }} placeholder='Senha' onChangeText={texto => props.modificaSenha(texto)} />
+                    <TextInput value={props.email} style={{ fontSize: 20, height: 45 }} placeholder='E-mail' placeholderTextColor='#fff' onChangeText={texto => props.modificaEmail(texto)} />
+                    <TextInput secureTextEntry value={props.senha} style={{ fontSize: 20, height: 45 }} placeholder='Senha' placeholderTextColor='#fff' onChangeText={texto => props.modificaSenha(texto)} />
                     <TouchableOpacity onPress={() => Actions.formCadastro()}>
-                        <Text style={{ fontSize: 18 }} >Ainda não tem cadastro? Cadastra-se</Text>
+                        <Text style={{ fontSize: 18, color: '#fff' }} >Ainda não tem cadastro? Cadastra-se</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{ flex: 2 }}>
