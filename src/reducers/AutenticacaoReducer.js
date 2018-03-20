@@ -5,6 +5,7 @@ const INICIAL_STATE = {
 }
 
 export default  (state = INICIAL_STATE, action) => {
+    console.log(action);
     if(action.type == 'modifica_nome'){
         return { ...state, nome: action.payload }
     }
