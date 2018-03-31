@@ -31,11 +31,11 @@ export const cadastraUsuario = ({ nome, email, senha }) => {
             .then(user => {
                 let emailB64 = b64.encode(email);
                 firebase.database().ref(`/contatos/${emailB64}`)
-                .set(
-                    { nome: nome }
-                )
-                .then(value => cadastroUsuarioSucesso(dispatch))
-                
+                    .set(
+                        { nome: nome }
+                    )
+                    .then(value => cadastroUsuarioSucesso(dispatch))
+
             })
             .catch(erro => cadastroUsuarioErro(erro, dispatch));
     }
@@ -44,18 +44,20 @@ export const cadastraUsuario = ({ nome, email, senha }) => {
 
 
 cadastroUsuarioSucesso = (dispatch) => {
-    dispatch ({ type: 'cadastra_usuario_sucesso' });
+    dispatch({ type: 'cadastra_usuario_sucesso' });
 
     Actions.boasVindas();
 }
 
 cadastroUsuarioErro = (erro, dispatch) => {
-    dispatch ({ type: 'cadastro_usuario_erro', payload: erro.message }); 
+    dispatch({ type: 'cadastro_usuario_erro', payload: erro.message });
 }
 
 export const antenticarUsuario = ({ email, senha }) => {
-    console.log(email);
-    console.log(senha);
+
+    firebase.auth().signInWithEmailAndPassword(email, senha)
+        .then(value => console.log(value))
+        .catch(erro => console.log(erro));
     return {
         type: 'teste'
     }
