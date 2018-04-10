@@ -71,9 +71,8 @@ const loginUsuarioSucesso = (dispatch) => {
 }
 
 const loginUsuarioErro = (erro, dispatch) => {
+    console.log(erro);
     dispatch (
-        {
-            type: 'login_usuario_erro'
-        }
+        { type: 'login_usuario_erro', payload: erro.message }
     );
 }

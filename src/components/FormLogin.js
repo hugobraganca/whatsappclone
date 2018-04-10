@@ -21,6 +21,7 @@ class formLogin extends Component {
                     <View style={{ flex: 2 }}>
                         <TextInput value={this.props.email} style={{ fontSize: 20, height: 45 }} placeholder='E-mail' placeholderTextColor='#fff' onChangeText={texto => this.props.modificaEmail(texto)} />
                         <TextInput secureTextEntry value={this.props.senha} style={{ fontSize: 20, height: 45 }} placeholder='Senha' placeholderTextColor='#fff' onChangeText={texto => this.props.modificaSenha(texto)} />
+                        <Text style={{ color: '#ff0000', fontSize: 18 }}>{this.props.erroLogin}</Text>
                         <TouchableOpacity onPress={() => Actions.formCadastro()}>
                             <Text style={{ fontSize: 18, color: '#fff' }} >Ainda não tem cadastro? Cadastra-se</Text>
                         </TouchableOpacity>
@@ -37,7 +38,8 @@ class formLogin extends Component {
 mapStateToProps = state => (
     {
         email: state.AutenticacaoReducer.email,
-        senha: state.AutenticacaoReducer.senha
+        senha: state.AutenticacaoReducer.senha,
+        erroLogin: state.AutenticacaoReducer.erroLogin
     }
 );
 
