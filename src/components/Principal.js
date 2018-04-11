@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 const Principal = props => (
     <View style={{ marginTop: 100 }}>
-        <Text>Página principal da aplicação</Text>
+        <Text style={{ fontSize: 18 }}>Página principal da aplicação</Text>
     </View>
 );
 
