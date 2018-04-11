@@ -68,6 +68,8 @@ const loginUsuarioSucesso = (dispatch) => {
             type: 'login_usuario_sucesso'
         }
     );
+
+    Actions.principal();
 }
 
 const loginUsuarioErro = (erro, dispatch) => {
