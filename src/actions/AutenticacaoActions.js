@@ -1,25 +1,32 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import b64 from 'base-64';
+import { MODIFICA_EMAIL,
+    MODIFICA_SENHA,
+    MODIFICA_NOME,
+    CADASTRO_USUARIO_SUCESSO,
+    CADASTRO_USUARIO_ERRO,
+    LOGIN_USUARIO_SUCESSO,
+    LOGIN_USUARIO_ERRO } from './types';
 
 export const modificaEmail = (texto) => {
     console.log(texto);
     return {
-        type: 'modifica_email',
+        type: MODIFICA_EMAIL,
         payload: texto
     }
 }
 
 export const modificaSenha = (texto) => {
     return {
-        type: 'modifica_senha',
+        type: MODIFICA_SENHA,
         payload: texto
     }
 }
 
 export const modificaNome = (texto) => {
     return {
-        type: 'modifica_nome',
+        type: MODIFICA_NOME,
         payload: texto
     }
 }
@@ -44,13 +51,13 @@ export const cadastraUsuario = ({ nome, email, senha }) => {
 
 
 cadastroUsuarioSucesso = (dispatch) => {
-    dispatch({ type: 'cadastra_usuario_sucesso' });
+    dispatch({ type: CADASTRO_USUARIO_SUCESSO });
 
     Actions.boasVindas();
 }
 
 cadastroUsuarioErro = (erro, dispatch) => {
-    dispatch({ type: 'cadastro_usuario_erro', payload: erro.message });
+    dispatch({ type: CADASTRO_USUARIO_ERRO, payload: erro.message });
 }
 
 export const antenticarUsuario = ({ email, senha }) => {
@@ -65,7 +72,7 @@ export const antenticarUsuario = ({ email, senha }) => {
 const loginUsuarioSucesso = (dispatch) => {
     dispatch (
         {
-            type: 'login_usuario_sucesso'
+            type: LOGIN_USUARIO_SUCESSO
         }
     );
 
@@ -75,6 +82,6 @@ const loginUsuarioSucesso = (dispatch) => {
 const loginUsuarioErro = (erro, dispatch) => {
     console.log(erro);
     dispatch (
-        { type: 'login_usuario_erro', payload: erro.message }
+        { type: LOGIN_USUARIO_ERRO, payload: erro.message }
     );
 }
