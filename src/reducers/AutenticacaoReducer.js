@@ -4,7 +4,8 @@ import { MODIFICA_EMAIL,
     CADASTRO_USUARIO_SUCESSO,
     CADASTRO_USUARIO_ERRO,
     LOGIN_USUARIO_SUCESSO,
-    LOGIN_USUARIO_ERRO } from '../actions/types';
+    LOGIN_USUARIO_ERRO,
+    LOGIN_EM_ANDAMENTO } from '../actions/types';
 
 
 
@@ -13,7 +14,9 @@ const INICIAL_STATE = {
     email: '',
     senha: '',
     erroCadastro: '',
-    erroLogin: ''
+    erroLogin: '',
+    loading_login: false,
+    loading_cadastro: false
 }
 
 export default (state = INICIAL_STATE, action) => {
@@ -26,11 +29,15 @@ export default (state = INICIAL_STATE, action) => {
         case MODIFICA_SENHA:
             return { ...state, senha: action.payload }
         case CADASTRO_USUARIO_ERRO:
-            return { ...state, erroCadastro: action.payload }
+            return { ...state, erroCadastro: action.payload, loading_cadastro: false }
         case CADASTRO_USUARIO_SUCESSO:
-            return { ...state, nome: '', senha: '' }
+            return { ...state, nome: '', senha: '', loading_cadastro: false }
         case LOGIN_USUARIO_ERRO:
-            return { ...state, erroLogin: action.payload }
+            return { ...state, erroLogin: action.payload, loading_login: false }
+        case LOGIN_EM_ANDAMENTO:
+            return { ...state, loading_login: true }
+        case LOGIN_EM_ANDAMENTO:
+            return { ...state, loading_cadastro: true }
         default:
             return state;
     }
