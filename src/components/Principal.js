@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+
 import TabBarMenu from './TabBarMenu';
+import Conversas from './Conversas';
+import Contatos from './Contatos'
 
 const initialLayout = {
   height: 0,
   width: Dimensions.get('window').width,
 };
 
-const ConversasRoute = () => <View style={[ styles.container, { backgroundColor: '#ff4081' } ]} />;
-const ContatosRoute = () => <View style={[ styles.container, { backgroundColor: '#673ab7' } ]} />;
 
 export default class Principal extends Component {
   state = {
     index: 0,
     routes: [
-      { key: 'first', title: 'Conversas' },
-      { key: 'second', title: 'Contatos' },
+      { key: '1', title: 'Conversas' },
+      { key: '2', title: 'Contatos' },
     ],
   };
 
@@ -25,8 +26,8 @@ export default class Principal extends Component {
   _renderHeader = props => <TabBarMenu { ...props} />;
 
   _renderScene = SceneMap({
-    first: ConversasRoute,
-    second: ContatosRoute,
+    '1': Conversas,
+    '2': Contatos,
   });
 
   render() {
