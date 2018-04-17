@@ -2,6 +2,7 @@ import React from 'react';
 import  { View, TextInput, Button } from 'react-native';
 import { connect } from 'react-redux'
 import AppReducer from '../reducers/AppReducer';
+import { modificaAdicionaContatoEmail } from '../actions/AppActions';
 
 const AdicionarContato = props => (
     <View style={{ flex: 1, justifyContent: 'center', padding: 20 }}>
@@ -9,7 +10,7 @@ const AdicionarContato = props => (
             <TextInput 
                 placeholder='E-mail'
                 style={{ fontSize: 20, height: 45 }}
-                onChange={ ()=> false }
+                onChangeText={ (texto) => props.modificaAdicionaContatoEmail(texto) }
                 value={props.adiciona_contato_email}
             />
         </View>
@@ -26,4 +27,4 @@ const mapStateToProps = state => (
     }
 );
 
-export default connect(mapStateToProps, null)(AdicionarContato);
+export default connect(mapStateToProps, {modificaAdicionaContatoEmail})(AdicionarContato);
