@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Button, ImageBackground, Text, ActivityIndicator } from 'react-native';
+import { View, TextInput, Button, ImageBackground, Text, ActivityIndicator, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import { modificaNome, modificaEmail, modificaSenha, cadastraUsuario } from '../actions/AutenticacaoActions';
 
@@ -30,6 +30,7 @@ class formCadastro extends Component {
         return (
             <ImageBackground style={{ flex: 1 }} source={require('../imgs/bg.png')}>
                 <View style={{ flex: 1, padding: 10 }}>
+                <StatusBar backgroundColor="#114D44" />
                     <View style={{ flex: 4, justifyContent: 'center' }}>
                         <TextInput value={this.props.nome} placeholder='Nome' placeholderTextColor='#fff' style={{ fontSize: 20, height: 45 }} onChangeText={texto => this.props.modificaNome(texto)} />
                         <TextInput value={this.props.email} placeholder='E-mail' placeholderTextColor='#fff' style={{ fontSize: 20, height: 45 }} onChangeText={texto => this.props.modificaEmail(texto)} />

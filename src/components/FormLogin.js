@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, TouchableOpacity, ImageBackground, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, Button, TouchableOpacity, ImageBackground, ActivityIndicator, StatusBar } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { modificaEmail, modificaSenha, antenticarUsuario } from '../actions/AutenticacaoActions';
@@ -28,6 +28,7 @@ class formLogin extends Component {
         return (
             <ImageBackground style={{ flex: 1 }} source={require('../imgs/bg.png')}>
                 <View style={{ flex: 1, padding: 10 }}>
+                <StatusBar backgroundColor="#114D44" />
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                         <Text style={{ fontSize: 25, color: '#fff' }}>Whatsapp Clone</Text>
                     </View>
