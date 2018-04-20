@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import firebase from 'firebase';
+import * as firebase from "firebase";
 import 'firebase/firestore';
 import ReduxThunk from 'redux-thunk';
 
@@ -20,6 +20,8 @@ class App extends Component {
       storageBucket: "whatsapp-clone-82626.appspot.com",
       messagingSenderId: "222386931042"
     };
+
+    //firebase.initializeApp(config);
     !firebase.apps.length
       ? firebase.initializeApp(config).firestore()
       : firebase.app().firestore();
