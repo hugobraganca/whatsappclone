@@ -23,7 +23,7 @@ export default class Principal extends Component {
 
   _handleIndexChange = index => this.setState({ index });
 
-  _renderHeader = props => <TabBarMenu { ...props} />;
+  _renderHeader = props => <TabBarMenu { ...props} indicatorStyle={{ backgroundColor: 'white' }}/>;
 
   _renderScene = SceneMap({
     '1': Conversas,
