@@ -10,7 +10,7 @@ export default props => (
             <TextInput style={{ fontSize: 20, height: 45 }} placeholder='E-mail' />
             <TextInput style={{ fontSize: 20, height: 45 }} placeholder='Senha' />
             <TouchableHighlight onPress={() => Actions.formCadastro() }>
-                <Text style={{ fontSize: 20 }}>Ainda não tem cadastro?  cadastra-se</Text>
+                <Text style={{ fontSize: 20 }}>Ainda não tem cadastro? Cadastra-se</Text>
             </TouchableHighlight>
         </View>
         <View style={{ flex: 2 }}>
