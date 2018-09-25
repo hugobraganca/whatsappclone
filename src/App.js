@@ -9,6 +9,8 @@ import reducers from './reducers';
  class App extends Component {
 
     componentWillMount() {
+
+ 
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyD2HnYMmZH7bBuFajXImnPlChNpBY8zG1s",
@@ -18,7 +20,10 @@ import reducers from './reducers';
             storageBucket: "whatsapp-clone-82626.appspot.com",
             messagingSenderId: "222386931042"
         };
-        firebase.initializeApp(config);
+        //Verificando se o firebase está carregado
+        if (!firebase.apps.length) {
+            firebase.initializeApp(config);
+        }
     }
 
     render() {
