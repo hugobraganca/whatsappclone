@@ -22,20 +22,18 @@ export const modificaSenha = (senha) => {
 }
 
 export const cadastrarUsuario = ({nome, email, senha}) => {
+    return dispatch => {
+        firebase.auth().createUserWithEmailAndPassword(email, senha)
+        .then(user => cadastroUsuarioSucesso(dispatch))
+        .catch(erro => cadastroUsuarioErro(erro, dispatch))
+    }
     
-    firebase.auth().createUserWithEmailAndPassword(email, senha)
-        .then(user => cadastroUsuarioSucesso())
-        .catch(erro => cadastroUsuarioErro(erro))
 }
 
-const cadastroUsuarioSucesso = () => {
-    return {
-        type: 'sucesso'
-    }
+const cadastroUsuarioSucesso = (dispatch) => {
+    dispatch ( { type: 'cadastro_usuario_sucesso' } );
 }
 
-const cadastroUsuarioErro = (erro) => {
-    return {
-        type: 'erro'
-    }
+const cadastroUsuarioErro = (erro, dispatch) => {
+    dispatch({ type: 'cadastro_usuario_erro', payload: erro.message });
 }
