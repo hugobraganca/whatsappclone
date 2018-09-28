@@ -29,11 +29,11 @@ export const cadastrarUsuario = ({nome, email, senha}) => {
         .then(user => {
             let emailB64 = b64.encode(email);
 
-            firebase.database().ref('/contatos/'+ emailB64)
+            firebase.database().ref(`/contatos/${emailB64}`)
                 .push({ nome })
                 .then(value => cadastroUsuarioSucesso(dispatch))
         })
-        .catch(erro => cadastroUsuarioErro(erro, dispatch))
+        .catch(erro => cadastroUsuarioErro(erro, dispatch));
     }
     
 }
@@ -46,4 +46,20 @@ const cadastroUsuarioSucesso = (dispatch) => {
 
 const cadastroUsuarioErro = (erro, dispatch) => {
     dispatch({ type: 'cadastro_usuario_erro', payload: erro.message });
+}
+
+export const autenticarUsuario = ({ email, senha }) => {
+    return dispatch => {
+        firebase.auth().signInWithEmailAndPassword(email, senha)
+            .then(value => loginUsuarioSucesso(dispatch))
+            .catch(erro => loginUsuarioErro(erro, dispatch));
+    }
+}
+
+const loginUsuarioSucesso = (dispatch) => {
+    dispatch ({ type: 'login_usuario_sucesso' });
+}
+
+const loginUsuarioErro = (erro, dispatch) => {
+    dispatch ({ type: 'login_usuario_erro' }) ;
 }
