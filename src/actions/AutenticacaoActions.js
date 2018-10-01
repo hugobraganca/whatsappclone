@@ -9,7 +9,8 @@ import {
     CADASTRO_USUARIO_ERRO,
     LOGIN_USUARIO_SUCESSO,
     LOGIN_USUARIO_ERRO,
-    LOGIN_EM_ANDAMENTO
+    LOGIN_EM_ANDAMENTO,
+    CADASTRO_EM_ANDAMENTO
    } from './types';
 
 export const modificaNome = (nome) => {
@@ -35,6 +36,9 @@ export const modificaSenha = (senha) => {
 
 export const cadastrarUsuario = ({nome, email, senha}) => {
     return dispatch => {
+
+        dispatch({type: CADASTRO_EM_ANDAMENTO})
+
         firebase.auth().createUserWithEmailAndPassword(email, senha)
         .then(user => {
             let emailB64 = b64.encode(email);
