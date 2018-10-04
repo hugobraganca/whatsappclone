@@ -12,7 +12,7 @@ export default props => (
             </View>
             <View style={{ flexDirection: 'row', marginRight: 20 }}>
                 <View style={{ justifyContent: 'center', width: 50, alignItems: 'center' }}>
-                    <TouchableHighlight onPress={() => Actions.adicionarContato}
+                    <TouchableHighlight onPress={() => Actions.adicionarContato()}
                     underlayColor="#114D44">
                         <Image source={require('../imgs/adicionar-contato.png')} />
                     </TouchableHighlight>
