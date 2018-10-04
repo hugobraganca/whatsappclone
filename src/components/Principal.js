@@ -33,7 +33,6 @@ export default class Principal extends Component {
         renderHeader={this._renderHeader}
         onRequestChangeTab={this._handleChangeTab}
         onIndexChange={index => this.setState({ index })}
-        // initialLayout={{ width: Dimensions.get('window').width }}
       />
     );
   }

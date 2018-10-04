@@ -3,6 +3,6 @@ import { View, Text } from 'react-native';
 
 export default props => (
     <View>
-        <Text>Conversas</Text>
+        <Text>Adicionar Contato</Text>
     </View>
 );
