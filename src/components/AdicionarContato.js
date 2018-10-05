@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, Button } from 'react-native';
 import { connect } from 'react-redux';
+import { modificaAdicionaContatoEmail } from '../actions/AppActions';
 
 class adicionarContato extends Component {
 
@@ -12,7 +13,7 @@ class adicionarContato extends Component {
                     value={this.props.adiciona_contato_email} 
                     placeholder="E-mail"
                     style={{ fontSize: 20, height: 45  }}
-                    onChange={ () => false }
+                    onChangeText={ email => this.props.modificaAdicionaContatoEmail(email) }
                     />
                 </View>
                 <View style={{ flex: 1 }}>
@@ -29,4 +30,4 @@ const mapStateToProps = state => (
     }
 )
 
-export default connect(mapStateToProps, null)(adicionarContato);
+export default connect(mapStateToProps, { modificaAdicionaContatoEmail })(adicionarContato);
