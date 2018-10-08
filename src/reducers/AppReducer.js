@@ -3,7 +3,8 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    adiciona_contato_email: ''
+    adiciona_contato_email: '',
+    cadastro_resultado_txt_erro: 'Teste de Erro'
 
 };
 
