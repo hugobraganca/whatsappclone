@@ -10,3 +10,10 @@ export const modificaAdicionaContatoEmail = (email) => {
         payload : email
     }
 }
+
+export const adicionaContato = (email) => {
+    console.log(email);
+    return {
+        type : 'teste'
+    }
+}
