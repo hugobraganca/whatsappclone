@@ -1,7 +1,9 @@
 import b64 from 'base-64';
 import firebase from 'firebase';
 import { 
-    MODIFICA_ADICIONA_CONTATO_EMAIL, ADICIONA_CONTATO_ERRO
+    MODIFICA_ADICIONA_CONTATO_EMAIL, 
+    ADICIONA_CONTATO_ERRO,
+    ADICIONA_CONTATO_SUCESSO
    } from './types';
 
 
@@ -22,16 +24,14 @@ export const adicionaContato = (email) => {
             .once('value')
             .then(snapshot => {
                 if(snapshot.val()) {
-                    console.log(snapshot.val().nome);
-
 
                     const { currentUser } = firebase.auth();
                     let emailUsuarioB64 = b64.encode(currentUser.email);
 
                     firebase.database().ref(`/usuario_contatos/${emailUsuarioB64}`)
                         .set({ email, nome: snapshot.val().nome })
-                        .then( () => console.log('Sucesso'))
-                        .catch( erro => console.log(erro))
+                        .then( () => adicionaContatoSucesso(dispatch))
+                        .catch( erro => adcionaConatoErro(erro.message, dispatch))
                 } else {
                     dispatch(
                         { 
@@ -43,3 +43,27 @@ export const adicionaContato = (email) => {
         }
 
 }
+
+const adcionaConatoErro = (erro, dispatch) => (
+    dispatch (
+        {
+            type: ADICIONA_CONTATO_ERRO, 
+            payload: erro
+        })
+)
+
+const adicionaContatoSucesso = (dispatch) => (
+    dispatch(
+        {
+            type: ADICIONA_CONTATO_SUCESSO,
+            payload: true
+        }
+    )
+)
+
+export const habilitaInclusaoContato = () => (
+    {
+        type: ADICIONA_CONTATO_SUCESSO,
+        payload: false
+    }
+)

@@ -5,23 +5,42 @@ import { modificaAdicionaContatoEmail, adicionaContato } from '../actions/AppAct
 
 class adicionarContato extends Component {
 
-    render() {
-        return(
-            <View style={{ flex: 1, justifyContent: 'center', padding: 20  }}>
-                <View style={{ flex: 1, justifyContent: 'center'  }}>
-                    <TextInput 
-                    value={this.props.adiciona_contato_email} 
-                    placeholder="E-mail"
-                    style={{ fontSize: 20, height: 45  }}
-                    onChangeText={ email => this.props.modificaAdicionaContatoEmail(email) }
-                    />
+    renderAdicionarContato() {
+        console.log(!this.props.cadastro_resultado_inclusao)
+        if(!this.props.cadastro_resultado_inclusao) {
+            return (
+                <View style={{ flex: 1, justifyContent: 'center', padding: 20  }}>
+                    <View style={{ flex: 1, justifyContent: 'center'  }}>
+                        <TextInput 
+                        value={this.props.adiciona_contato_email} 
+                        placeholder="E-mail"
+                        style={{ fontSize: 20, height: 45  }}
+                        onChangeText={ email => this.props.modificaAdicionaContatoEmail(email) }
+                        />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        <Button title="Adicionar" color="#115E54" onPress={ () => this.props.adicionaContato(this.props.adiciona_contato_email) } />
+                        <Text style={{ color: '#ff0000', fontSize: 20 }}>
+                            {this.props.cadastro_resultado_txt_erro}
+                        </Text>
+                    </View>
                 </View>
+            );
+        } else {
+            return (
                 <View style={{ flex: 1 }}>
-                    <Button title="Adicionar" color="#115E54" onPress={ () => this.props.adicionaContato(this.props.adiciona_contato_email) } />
-                    <Text style={{ color: '#ff0000', fontSize: 20 }}>
-                        {this.props.cadastro_resultado_txt_erro}
+                    <Text style={{ fontSize: 20 }}>
+                        Cadastro realizado com sucesso!
                     </Text>
                 </View>
+            )
+        }
+    }
+
+    render() {
+        return(
+            <View style={{ flex: 1, justifyContent: 'center', padding: 20 }}>
+                { this.renderAdicionarContato() }
             </View>
         );
     }
@@ -30,7 +49,8 @@ class adicionarContato extends Component {
 const mapStateToProps = state => (
     {
         adiciona_contato_email: state.AppReducer.adiciona_contato_email,
-        cadastro_resultado_txt_erro: state.AppReducer.cadastro_resultado_txt_erro
+        cadastro_resultado_txt_erro: state.AppReducer.cadastro_resultado_txt_erro,
+        cadastro_resultado_inclusao: state.AppReducer.cadastro_resultado_inclusao
     }
 )
 
