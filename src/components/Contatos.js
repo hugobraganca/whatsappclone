@@ -18,6 +18,11 @@ class Contatos extends Component {
     }
 }
 
-export default connect(null, { contatosUsuarioFetch })(Contatos);
+const mapStateToProps = state => {
+    console.log(state.ListaContatosReducer);
+    return {}
+}
+
+export default connect(mapStateToProps, { contatosUsuarioFetch })(Contatos);
 
     
