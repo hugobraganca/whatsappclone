@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { contatosUsuarioFetch } from '../actions/AppActions';
 
 class Contatos extends Component {
@@ -8,9 +9,9 @@ class Contatos extends Component {
     constructor(props) {
         super(props)
 
-        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2})
 
-        this.state = {fonteDeDados: ds.cloneWithRows([
+        this.state = { fonteDeDados: ds.cloneWithRows([
             'Registro 1',
             'Registro 2',
             'Registro 3',
@@ -20,18 +21,23 @@ class Contatos extends Component {
 
     componentWillMount() {
         this.props.contatosUsuarioFetch();
-        console.log('recuperado via props',this.props.contatos)
+        console.log( 'recuperado via props: ',this.props.contatos)
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('recuperado via props após update',nextProps.contatos)
+        console.log('Recuperado via props após update: ',nextProps.contatos)
     }
 
     render() {
         return(
             <ListView 
                 dataSource={this.state.fonteDeDados}
-                renderRow={data => <View><Text>{data}</Text></View>}
+                renderRow={ data => 
+                    <View>
+                        <Text>{data}</Text>
+                    </View>
+                }
+
             />
         );
     }
@@ -39,7 +45,10 @@ class Contatos extends Component {
 
 const mapStateToProps = state => {
     console.log(state.ListaContatosReducer);
-    return { contatos: state.ListaContatosReducer }
+    const contatos = _.map(state.ListaContatosReducer, (val, uid) => {
+        return { ...val, uid }
+    })
+    return { contatos: contatos }
 }
 
 export default connect(mapStateToProps, { contatosUsuarioFetch })(Contatos);
