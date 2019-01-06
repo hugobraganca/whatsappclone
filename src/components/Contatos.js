@@ -9,7 +9,6 @@ class Contatos extends Component {
 
     constructor(props) {
         super(props)
-
     }
 
     componentWillMount() {
@@ -32,7 +31,8 @@ class Contatos extends Component {
     renderRow(contato) {
         return (
             <TouchableHighlight
-                onPress={() => Actions.conversa()}
+                onPress={() => Actions.conversa()} 
+                underlayColor='#fff'
             >
                 <View style={{ flex: 1, padding: 20, borderBottomWidth: 1, borderBottomColor: "#CCC" }}>
                     <Text style={{ fontSize: 25 }}>{contato.nome}</Text>
