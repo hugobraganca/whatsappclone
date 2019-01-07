@@ -95,3 +95,10 @@ export const modificaMensagem = texto => {
     })
 
 }
+
+export const enviarMensagem = mensagem => {
+    console.log(mensagem);
+    return ({
+        type: 'xyz'
+    })
+}
