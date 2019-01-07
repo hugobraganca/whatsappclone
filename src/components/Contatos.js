@@ -31,7 +31,7 @@ class Contatos extends Component {
     renderRow(contato) {
         return (
             <TouchableHighlight
-                onPress={() => Actions.conversa()} 
+                onPress={() => Actions.conversa({ title: contato.nome, contatoNome: contato.nome, contatoEmail: contato.email })} 
                 underlayColor='#fff'
             >
                 <View style={{ flex: 1, padding: 20, borderBottomWidth: 1, borderBottomColor: "#CCC" }}>
@@ -55,7 +55,7 @@ class Contatos extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.ListaContatosReducer);
+    // console.log(state.ListaContatosReducer);
     const contatos = _.map(state.ListaContatosReducer, (val, uid) => {
         return { ...val, uid }
     })
