@@ -116,6 +116,25 @@ export const enviarMensagem = (mensagem, contatoNome, contatoEmail) => {
                 firebase.database().ref(`/mensagens/${contatoEmailB64}/${usuarioEmailB64}`)
                 .push( { mensagem, tipo: 'r' })
                 .then(() => dispatch ({type: 'xyz'}))
-            })    
+            })
+            .then(() => { //armazenamento dos cabeçalho
+                firebase.database().ref(`/usuario_conversas/${usuarioEmailB64}/${contatoEmailB64}`)
+                    .set({ nome: contatoNome, email: contatoEmail })
+            })
+            .then(()=> { //armazenar o cabeçalho de conversa do contato
+
+                firebase.database().ref(`/contatos/${usuarioEmailB64}`)
+                    .once("value")
+                    .then(snapshot => {
+
+                        const dadosUsuario = _.first(_.values(snapshot.val()));
+                        console.log('snapshot: ' + snapshot.val())
+                        console.log('values: '+ _.values(snapshot.val()))
+                        console.log('dados usuário: ' + dadosUsuario);
+
+                        firebase.database().ref(`/usuario_conversas/${contatoEmailB64}/${usuarioEmailB64}`)
+                            .set({ nome: dadosUsuario.nome, email: usuarioEmail })
+                    })
+            })
     }
 }
