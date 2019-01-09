@@ -27,11 +27,17 @@ class Conversa extends Component {
     }
 
     renderRow(texto) {
+        if(texto.tipo === 'e') {
+            return (
+                <View style={{ alignItems: 'flex-end', marginTop: 5, marginBottom: 5, marginLeft: 40, borderRadius: 10 }}>
+                    <Text style={{ fontSize: 15, color: "#000", padding: 10, backgroundColor: "#DBF5B4", elevation: 1 }}>{texto.mensagem}</Text>
+                </View>
+            )
+        }
         return (
-            <View>
-                <Text>{texto.mensagem}</Text>
-                <Text>{texto.tipo}</Text>
-            </View>
+            <View style={{ alignItems: 'flex-start', marginTop: 5, marginBottom: 5, marginRight: 40, borderRadius: 10 }}>
+                    <Text style={{ fontSize: 15, color: "#000", padding: 10, backgroundColor: "#F7F7F7", elevation: 1 }}>{texto.mensagem}</Text>
+                </View>
         )
     }
 
@@ -65,8 +71,6 @@ mapStateToProps = state => {
     const conversa = _.map(state.ListaConversaReducer, (val, uid) => {
         return { ...val, uid };
     });
-
-    console.log(conversa);
 
     return ({
         conversa,
