@@ -7,7 +7,7 @@ import { modificaMensagem, enviarMensagem, conversaUsuarioFetch } from '../actio
 class Conversa extends Component {
 
     componentWillMount() {
-        this.props.conversaUsuaruietch(this.props.contatoEmail);
+        this.props.conversaUsuarioFetch(this.props.contatoEmail);
         this.criaFonteDeDados(this.props.conversa);
     }
 

@@ -160,10 +160,11 @@ export const conversasUsuarioFetch = () => {
     
     const { currentUser } = firebase.auth();
 
-    let usuarioEmailB64 = b64.encode(currentUser.email);
-
     return dispatch => {
-        firebase.datebase().ref(`/usuario_conversas/${usuarioEmailB64}`)
+
+        let usuarioEmailB64 = b64.encode(currentUser.email);
+
+        firebase.database().ref(`/usuario_conversas/${usuarioEmailB64}`)
             .on("value", snapshot => {
                 dispatch({ type: LISTA_CONVERSAS_USUARIO, payload: snapshot.val() })
             })
