@@ -14,3 +14,4 @@ export const ADICIONA_CONTATO_ERRO = 'adiciona_contato_erro';
 export const ADICIONA_CONTATO_SUCESSO = 'adiciona_contato_sucesso';
 export const LISTA_CONTATO_USUARIO = 'lista_contato_usuario';
 export const LISTA_CONVERSA_USUARIO = 'lista_conversa_usuario';
+export const ENVIA_MENSAGEM_SUCESSO = 'envia_mensagem_sucesso';

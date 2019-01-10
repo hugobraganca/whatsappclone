@@ -7,7 +7,8 @@ import {
     ADICIONA_CONTATO_SUCESSO,
     LISTA_CONTATO_USUARIO,
     MODIFICA_MENSAGEM,
-    LISTA_CONVERSA_USUARIO
+    LISTA_CONVERSA_USUARIO,
+    ENVIA_MENSAGEM_SUCESSO
    } from './types';
 
 
@@ -116,7 +117,7 @@ export const enviarMensagem = (mensagem, contatoNome, contatoEmail) => {
             .then(() => {
                 firebase.database().ref(`/mensagens/${contatoEmailB64}/${usuarioEmailB64}`)
                 .push( { mensagem, tipo: 'r' })
-                .then(() => dispatch ({type: 'xyz'}))
+                .then(() => dispatch ({ type: ENVIA_MENSAGEM_SUCESSO }))
             })
             .then(() => { //armazenamento dos cabeçalho
                 firebase.database().ref(`/usuario_conversas/${usuarioEmailB64}/${contatoEmailB64}`)
