@@ -141,7 +141,7 @@ export const enviarMensagem = (mensagem, contatoNome, contatoEmail) => {
             })
     }
 }
-export const conversaUsuaruietch = contatoEmail => {
+export const conversaUsuarioFetch = contatoEmail => {
 
     const { currentUser } = firebase.auth();
 

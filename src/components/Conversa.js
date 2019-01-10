@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { View, Text, TextInput, Image, TouchableHighlight, ListView } from 'react-native';
-import { modificaMensagem, enviarMensagem, conversaUsuaruietch } from '../actions/AppActions';
+import { modificaMensagem, enviarMensagem, conversaUsuarioFetch } from '../actions/AppActions';
 
 class Conversa extends Component {
 
@@ -79,4 +79,4 @@ mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, { modificaMensagem, enviarMensagem, conversaUsuaruietch })(Conversa)
+export default connect(mapStateToProps, { modificaMensagem, enviarMensagem, conversaUsuarioFetch })(Conversa)
