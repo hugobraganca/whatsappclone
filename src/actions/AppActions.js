@@ -145,7 +145,7 @@ export const conversaUsuarioFetch = contatoEmail => {
 
     const { currentUser } = firebase.auth();
 
-    //comport os email na base 64
+    //comporta os email na base 64
     let usuarioEmailB64 = b64.encode(currentUser.email)
     let contatoEmailB64 = b64.encode(contatoEmail);
     return dispatch => {
@@ -154,4 +154,19 @@ export const conversaUsuarioFetch = contatoEmail => {
                 dispatch({ type: LISTA_CONVERSA_USUARIO, payload: snapshot.val() })
             })
     }
+}
+
+export const conversasUsuarioFetch = () => {
+    
+    const { currentUser } = firebase.auth();
+
+    let usuarioEmailB64 = b64.encode(currentUser.email);
+
+    return dispatch => {
+        firebase.datebase().ref(`/usuario_conversas/${usuarioEmailB64}`)
+            .on("value", snapshot => {
+                dispatch({ type: LISTA_CONVERSAS_USUARIO, payload: snapshot.val() })
+            })
+    }
+
 }
