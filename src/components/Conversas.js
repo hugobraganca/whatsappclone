@@ -24,11 +24,11 @@ class Conversas extends Component {
     renderRow(conversa) {
         return (
                 <TouchableHighlight
-                    onPress={() => false}
+                    onPress={() => Actions.conversa({ title: conversa.nome, contatoNome: conversa.nome, contatoEmail: conversa.email  }) }
                     underlayColor='#fff'
                 >
                     <View style={{ flex: 1, padding: 20, borderBottomWidth: 1, borderBottomColor: "#CCC" }}>
-                        <Text style={{ fontSize: 18,  }}>{conversa.nome}</Text>
+                        <Text style={{ fontSize: 25  }}>{conversa.nome}</Text>
                     </View>
                 </TouchableHighlight>
         )
