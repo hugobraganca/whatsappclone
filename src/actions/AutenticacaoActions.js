@@ -34,10 +34,29 @@ export const modificaSenha = (senha) => {
     }
 }
 
+var actionCodeSettings = {
+    // URL you want to redirect back to. The domain (www.example.com) for this
+    // URL must be whitelisted in the Firebase Console.
+    url: 'https://whatsapp-clone-82626.firebaseapp.com',
+    // This must be true.
+    handleCodeInApp: true,
+    iOS: {
+      bundleId: 'com.example.ios'
+    },
+    android: {
+      packageName: 'com.whatsappclone',
+      installApp: true,
+      minimumVersion: '12'
+    },
+    dynamicLinkDomain: 'whatsappcloneteste.page.link'
+  };
+
 export const cadastrarUsuario = ({nome, email, senha}) => {
     return dispatch => {
 
         dispatch({type: CADASTRO_EM_ANDAMENTO})
+
+        enviarEmailParaUsuario(email);
 
         firebase.auth().createUserWithEmailAndPassword(email, senha)
         .then(user => {
@@ -50,6 +69,22 @@ export const cadastrarUsuario = ({nome, email, senha}) => {
         .catch(erro => cadastroUsuarioErro(erro, dispatch));
     }
     
+}
+
+const enviarEmailParaUsuario = (email) => {
+    firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+        .then(function() {
+            // The link was successfully sent. Inform the user.
+            // Save the email locally so you don't need to ask the user for it again
+            // if they open the link on the same device.
+            console.log(email);
+            console.log(actionCodeSettings);
+            window.localStorage.setItem('emailForSignIn', email);
+        })
+        .catch(function(error) {
+            // Some error occurred, you can inspect the code: error.code
+            console.log(error);
+        });
 }
 
 const cadastroUsuarioSucesso = (dispatch) => {
